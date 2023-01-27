@@ -35,14 +35,14 @@ class productColourModel(models.Model):
         ('green','green'),
         ('black','black'),
     )
-    Product = models.ForeignKey(productMainModel,on_delete=models.CASCADE)
+    Product = models.ForeignKey(productMainModel,related_name="product_color",on_delete=models.CASCADE)
     Colour = models.CharField(choices=colour_choice,max_length=100)
 
     def __str__(self):
         return str(self.Product)
 
 class productImageModel(models.Model):
-    Product = models.ForeignKey(productMainModel,on_delete=models.CASCADE)
+    Product = models.ForeignKey(productMainModel,related_name="product_image" ,on_delete=models.CASCADE)
     Image   = models.ImageField(upload_to='pics', height_field=None, width_field=None, max_length=100)
     
     def __str__(self):
